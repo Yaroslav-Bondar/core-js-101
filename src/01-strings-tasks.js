@@ -306,7 +306,7 @@ function encodeToRot13(str) {
 
   let output = '';
 
-  for (const character of str) {
+  function iterate(character) {
     if (character === character.toUpperCase()) {
       const encodedCharacter = ROT13[character.toLowerCase()];
       output += encodedCharacter ? encodedCharacter.toUpperCase() : character;
@@ -314,6 +314,8 @@ function encodeToRot13(str) {
       output += ROT13[character];
     }
   }
+
+  [...str].forEach(iterate);
 
   return output;
 }
